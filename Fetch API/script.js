@@ -5,6 +5,12 @@ fetchPromise
         console.log(response);
         return response.json();
     })
-    .then((data) => {
-        console.log(data);
-    });
+    .then((data) => {});
+
+const getUsers = async () => {
+    const res = await fetch('https://jsonplaceholder.typicode.com/users');
+    const data = await res.json();
+    console.log(data);
+};
+
+getUsers();
