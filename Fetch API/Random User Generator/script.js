@@ -1,10 +1,19 @@
 const fetchUser = () => {
     fetch('https://www.randomuser.me/api')
         .then((res) => {
+            if (!res.ok) {
+                throw new Error('Request Failed');
+            }
+
             return res.json();
         })
         .then((data) => {
             putUserData(data.results[0]);
+        })
+        .catch((err) => {
+            document.querySelector('#user').innerHTML = `
+          <h1 style="color:red">${err}<h1>
+          `;
         });
 };
 
