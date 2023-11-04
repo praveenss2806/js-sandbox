@@ -8,9 +8,16 @@ fetchPromise
     .then((data) => {});
 
 const getUsers = async () => {
-    const res = await fetch('https://jsonplaceholder.typicode.com/users');
-    const data = await res.json();
-    console.log(data);
+    try {
+        const res = await fetch('http://httpstat.us/404');
+        if (!res.ok) {
+            throw new Error('Reqest Failed');
+        }
+        const data = await res.json();
+        console.log(data);
+    } catch (err) {
+        console.log(err);
+    }
 };
 
 getUsers();
